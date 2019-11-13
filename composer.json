@@ -1,5 +1,5 @@
 {
-    "name": "hcancelik/dynamodb",
+    "name": "hcancelik/laravel-dynamodb",
     "description": "Eloquent syntax for DynamoDB",
     "keywords": ["laravel", "dynamodb", "aws"],
     "require": {
