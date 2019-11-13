@@ -4,6 +4,7 @@ namespace BaoPham\DynamoDb;
 
 use Aws\DynamoDb\DynamoDbClient;
 use Aws\DynamoDb\Marshaler;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
 
 class DynamoDbClientService implements DynamoDbClientInterface
@@ -31,6 +32,7 @@ class DynamoDbClientService implements DynamoDbClientInterface
     }
 
     /**
+     * @param null $connection
      * @return \Aws\DynamoDb\DynamoDbClient
      */
     public function getClient($connection = null)
@@ -43,7 +45,7 @@ class DynamoDbClientService implements DynamoDbClientInterface
 
         $config = config("dynamodb.connections.$connection", []);
         $config['version'] = '2012-08-10';
-        $config['debug'] = $this->getDebugOptions(array_get($config, 'debug'));
+        $config['debug'] = $this->getDebugOptions(Arr::get($config, 'debug'));
 
         $client = new DynamoDbClient($config);
 
